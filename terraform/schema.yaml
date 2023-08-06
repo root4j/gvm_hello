@@ -1,0 +1,49 @@
+# Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
+# Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
+
+  title: "My GraalVM Infrastructure"
+  description: "Creating a GraalVM environment for Sample in an agile way"
+  schemaVersion: 1.2.0
+  version: "20230725"
+  locale: "en"
+
+#################
+# Variables
+#################
+  variableGroups:
+  - title: General Configuration
+    visible: true
+    variables:
+    - region
+    - compartment_ocid
+    - tenancy_ocid
+    - network_cidr
+
+  variables:
+    region:
+      title: Region
+      description: The OCI region where the resources will be created.
+      type: oci:identity:region:name
+      required: true
+
+    compartment_ocid:
+      title: Target Compartment
+      description: The ID of the Target Compartment where to create all the resources.
+      type: oci:identity:compartment:id
+      required: true
+
+    tenancy_ocid:
+      title: Tennant
+      description: The ID of the OCI Tennat.
+      type: oci:identity:tennant:id
+      required: true
+
+    network_cidr:
+      title: CIDR Local Network
+      type: enum
+      enum:
+        - "10.0"
+        - "172.16"
+        - "192.168"
+      default: "10.0"
+      required: true
